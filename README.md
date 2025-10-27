@@ -74,15 +74,12 @@ cd musicproject
 
 ## 📊 ERD Diagram
 
-![ERD Diagram](https://github.com/user-attachments/assets/ee605b4d-0928-4287-a5af-c7da767cfddd)
+<img width="1332" height="441" alt="image" src="https://github.com/user-attachments/assets/4a9c1994-7167-466f-a606-60eeee865d8a" />
+
 
 ---
 
-## 📈 Analytics Preview
 
-![Analytics Dashboard Placeholder](https://github.com/user-attachments/assets/placeholder-analytics.png)
-
----
 
 ## 💾 Schema SQL
 
@@ -140,6 +137,25 @@ INSERT INTO playlists (playlist_name, created_by, song_id, date_added) VALUES
 ```
 
 ---
+
+##output of our queries from supabase
+```sql
+SELECT s.title, a.name AS artist, s.release_year
+FROM songs s
+JOIN artists a ON s.artist_id = a.artist_id;
+```
+**View all songs and artists**
+<img width="1316" height="576" alt="image" src="https://github.com/user-attachments/assets/dd3ffa77-6467-467b-885a-c0cc09bd9352" />
+
+**Songs in the 'Chill Vibes' playlist**
+```sql
+Songs in the 'Chill Vibes' playlist
+SELECT p.playlist_name, s.title, a.name AS artist
+FROM playlists p
+JOIN songs s ON p.song_id = s.song_id
+JOIN artists a ON s.artist_id = a.artist_id
+WHERE p.playlist_name = 'Chill Vibes';
+```
 
 ## 👥 Author
 
