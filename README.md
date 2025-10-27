@@ -139,12 +139,13 @@ INSERT INTO playlists (playlist_name, created_by, song_id, date_added) VALUES
 ---
 
 ##output of our queries from supabase
+**View all songs and artists**
 ```sql
 SELECT s.title, a.name AS artist, s.release_year
 FROM songs s
 JOIN artists a ON s.artist_id = a.artist_id;
 ```
-**View all songs and artists**
+
 <img width="1316" height="576" alt="image" src="https://github.com/user-attachments/assets/dd3ffa77-6467-467b-885a-c0cc09bd9352" />
 
 **Songs in the 'Chill Vibes' playlist**
@@ -156,6 +157,18 @@ JOIN songs s ON p.song_id = s.song_id
 JOIN artists a ON s.artist_id = a.artist_id
 WHERE p.playlist_name = 'Chill Vibes';
 ```
+<img width="1342" height="541" alt="image" src="https://github.com/user-attachments/assets/f5a9ad37-fb9e-42fd-ac0d-9b692b3af39a" />
+
+** Number of songs per artist**
+
+```sql
+SELECT a.name, COUNT(s.song_id) AS total_songs
+FROM artists a
+LEFT JOIN songs s ON a.artist_id = s.artist_id
+GROUP BY a.name
+ORDER BY total_songs DESC;
+```
+<img width="1350" height="625" alt="image" src="https://github.com/user-attachments/assets/62483ff4-5c41-4f9e-abf6-66f6ef3b1293" />
 
 ## 👥 Author
 
@@ -175,4 +188,4 @@ GitHub: [@sharon khirasi](https://github.com/sharon975)
 ## 📝 License
 
 This project is licensed under the MIT License.
-jze-ujnh-wyq
+
